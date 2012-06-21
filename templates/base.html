@@ -1,0 +1,32 @@
+<html>
+   <head>
+      <title>{% block head_title %}My Guestbook{% endblock %}</title>
+      <link href="/media/base.css" rel="stylesheet" type="text/css">
+      {% block head_css %}{% endblock %}
+      {% block head_js %}{% endblock %}
+   </head>
+   <body>
+      <center><table width="1024" align=center><tr><td>
+      
+      <!-- Your site's header -->
+      <div id="header">
+          <h3>My Guestbook</h3>
+          <br />
+          <br />
+      </div>
+      
+      {% block body %} {% endblock %}
+      
+      <!-- Your site's footer -->
+      <div id="footer">
+            <br />
+            <br />
+            <p><a href=/>Home</a> | My Guestbook&rsquo;s footer</p>
+      </div>
+      <div style="text-align:right"><a href="http://www.coderbuddy.com/"><img src="http://www.coderbuddy.com/coderbuddy-noborder-86x30.gif" height="30" width="86" alt="Created with CoderBuddy" style="border:none;text-decoration:none"></a></div>
+      
+      </td></tr></table></center>
+      
+      {% block body_js %}{% endblock %}
+   </body>
+</html>

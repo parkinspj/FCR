@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+Welcome! - {{ block.super }}
+{% endblock %}
+
+{% block head_css %}
+<link href="/media/guestbook.css" rel="stylesheet" lang="text/css"/>
+{% endblock %}
+
+{% block head_js %}
+    <script type="text/javascript">
+      // Set focus on message text field.
+      window.onload = function(){
+        document.getElementsByName("message")[0].focus();
+      }
+    </script>
+{% endblock %}
+
+{% block body %}
+    <h1>Hello, please sign our guestbook</h1>  
+    <br />
+    {% if error %} 
+        <p style="color:red">Please type in a message</p>
+        <br /> 
+    {% endif %}
+    <form method="post" action="">{% csrf_token %}
+        <p>
+           Message: <input type="text" name="message" maxlength="50" size="50" />
+           &nbsp;&nbsp;<input type="submit" />
+        </p>
+    </form>
+    <br />
+
+
+  {% for message in message_list %}
+      <div class="bubble">
+          <blockquote>
+            <p>{{message.text}}</p>
+          </blockquote>
+          <cite>
+              on {{ message.created|date:"D M d, Y \a\t h:ia" }}
+          </cite>
+      </div>
+  {% endfor %}
+
+{% endblock %}
